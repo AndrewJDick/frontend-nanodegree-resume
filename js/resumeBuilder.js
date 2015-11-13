@@ -38,7 +38,7 @@ var bio = {
         };
 
         $("#header").prepend(formattedName, formattedRole);
-        $("#topContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
+        $("#topContacts, #footerContacts").append(formattedMobile, formattedEmail, formattedTwitter, formattedGithub, formattedLocation);
         $("#header").append(formattedBioPic, formattedWelcomeMsg);
         $("#header").append(HTMLskillsStart);
         $("#skills").append(formattedSkills);
@@ -50,29 +50,29 @@ var education = {
 
     "schools": [
         {
-            "schoolName": "Glasgow Caledonian University",
-            "schoolLocation": "Glasgow, UK",
-            "schoolDegree": "Audio Technology w/ Multimedia",
-            "schoolMajor": "Audio Theory",
-            "schoolDates": 2014,
-            "schoolURL": "http://www.gcu.ac.uk/"
+            "name": "Glasgow Caledonian University",
+            "location": "Glasgow, UK",
+            "degree": "Audio Technology w/ Multimedia",
+            "majors": "Audio Theory",
+            "dates": 2014,
+            "url": "http://www.gcu.ac.uk/"
         },
         {
-            "schoolName": "UMass Boston University",
-            "schoolLocation": "Boston, USA",
-            "schoolDegree": "International Student Exchange Programme",
-            "schoolMajor": "Circuit Theory & Programming",
-            "schoolDates": 2012,
-            "schoolURL": "https://www.umb.edu/"
+            "name": "UMass Boston University",
+            "location": "Boston, USA",
+            "degree": "International Student Exchange Programme",
+            "majors": "Circuit Theory & Programming",
+            "dates": 2012,
+            "url": "https://www.umb.edu/"
         }
     ],
 
     "onlineCourses": [
         {
-            "onlineTitle": "Front-end Web Developer",
-            "onlineSchool": "Udacity",
-            "onlineDates": 2015,
-            "onlineURL": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+            "title": "Front-end Web Developer",
+            "school": "Udacity",
+            "dates": 2015,
+            "url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
         }
     ],
 
@@ -83,12 +83,12 @@ var education = {
         // Schools
         for (school in education.schools) {
 
-            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].schoolName).replace("#", education.schools[school].schoolURL);
-            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].schoolDegree);
+            var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name).replace("#", education.schools[school].url);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
             var formattedSchoolNameDegree = formattedSchoolName + formattedSchoolDegree;
-            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].schoolLocation);
-            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].schoolMajor);
-            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].schoolDates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 
             $(".education-entry:last").append(formattedSchoolNameDegree);
             $(".education-entry:last").append(formattedSchoolDates);
@@ -97,13 +97,16 @@ var education = {
         }
 
         // Online Courses
+        $("#education").append(HTMLonlineClasses);
+        $("#education").append(HTMLschoolStart);
+
         for (course in education.onlineCourses) {
 
-            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].onlineTitle).replace("#", education.onlineCourses[course].onlineURL);
-            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].onlineSchool);
+            var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title).replace("#", education.onlineCourses[course].url);
+            var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
             var formattedOnlineTitleSchool = formattedOnlineTitle + formattedOnlineSchool;
-            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].onlineDates);
-            var formattedOnlineURL = HTMLonlineURL.replace('%data%', education.onlineCourses[course].onlineURL);
+            var formattedOnlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+            var formattedOnlineURL = HTMLonlineURL.replace('%data%', education.onlineCourses[course].url);
 
             $(".education-entry:last").append(formattedOnlineTitleSchool);
             $(".education-entry:last").append(formattedOnlineDates);
@@ -117,28 +120,28 @@ var work = {
 
     "jobs": [
         {
-            "workEmployer": "Cohaesus",
-            "workTitle": "Junior Developer",
-            "workLocation": "London, UK",
-            "workDates": "Feb 2015 - Present",
-            "workDescription": "Cohaesus is the trusted technical partner to some of the world's leading advertising & communication agencies",
-            "workURL": "http://www.cohaesus.co.uk"
+            "employer": "Cohaesus",
+            "title": "Junior Developer",
+            "location": "London, UK",
+            "dates": "Feb 2015 - Present",
+            "description": "Cohaesus is the trusted technical partner to some of the world's leading advertising & communication agencies",
+            "url": "http://www.cohaesus.co.uk"
         },
         {
-            "workEmployer": "Rockstar North",
-            "workTitle": "QA",
-            "workLocation": "Edinburgh, UK",
-            "workDates": "Apr 2014 - Feb 2015",
-            "workDescription": "Worked on Grand Theft Auto V: Online.",
-            "workURL": "http://www.rockstarnorth.com/"
+            "employer": "Rockstar North",
+            "title": "QA",
+            "location": "Edinburgh, UK",
+            "dates": "Apr 2014 - Feb 2015",
+            "description": "Worked on the QA team for Grand Theft Auto V: Online.",
+            "url": "http://www.rockstarnorth.com/"
         },
         {
-            "workEmployer": "Freelance",
-            "workTitle": "Sound Technician",
-            "workLocation": "Glasgow, UK",
-            "workDates": "Apr 2012 - Feb 2014",
-            "workDescription": "Focused on location recording, game SFX, and post-production editing.",
-            "workURL": "https://uk.linkedin.com/in/andrew-james-dick-a0511958"
+            "employer": "Freelance",
+            "title": "Sound Technician",
+            "location": "Glasgow, UK",
+            "dates": "Apr 2012 - Feb 2014",
+            "description": "Focused on location recording, game SFX, and post-production editing.",
+            "url": "https://uk.linkedin.com/in/andrew-james-dick-a0511958"
         }
     ],
 
@@ -148,13 +151,13 @@ var work = {
 
         for (employer in work.jobs) {
 
-            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[employer].workEmployer).replace("#", work.jobs[employer].workURL);
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[employer].workTitle);
+            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%", work.jobs[employer].employer).replace("#", work.jobs[employer].url);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%", work.jobs[employer].title);
             var formattedWorkEmployerTitle = formattedWorkEmployer + formattedWorkTitle;
 
-            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[employer].workLocation);
-            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[employer].workDates);
-            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[employer].workDescription);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%", work.jobs[employer].location);
+            var formattedWorkDates = HTMLworkDates.replace("%data%", work.jobs[employer].dates);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%", work.jobs[employer].description);
 
             $(".work-entry:last").append(formattedWorkEmployerTitle);
             $(".work-entry:last").append(formattedWorkLocation);
@@ -167,13 +170,13 @@ var work = {
 
 var projects = {
 
-    "project": [
+    "projects": [
         {
-            "projectTitle": "Monday Night Gaming",
-            "projectDates": "Aug 2015 - Present",
-            "projectDescription": "A small team of friends that works with C# in Unity to design computer games.",
-            "projectImages": ["images/project1a.jpg", "images/project1b.jpg"],
-            "projectURL": "https://github.com/mondaynightgaming"
+            "title": "Monday Night Gaming",
+            "dates": "Aug 2015 - Present",
+            "description": "A small team of friends that works with C# in Unity to design computer games.",
+            "images": ["images/project1a.jpg", "images/project1b.jpg"],
+            "url": "https://github.com/mondaynightgaming"
         }
     ],
 
@@ -181,17 +184,17 @@ var projects = {
 
         $("#projects").append(HTMLprojectStart);
 
-        for (task in projects.project) {
+        for (task in projects.projects) {
 
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.project[task].projectTitle).replace("#", projects.project[task].projectURL);
-            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.project[task].projectDates);
-            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.project[task].projectDescription);
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[task].title).replace("#", projects.projects[task].url);
+            var formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[task].dates);
+            var formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[task].description);
 
             // Project Images
             var formattedProjectImages = function () {
 
                 var imageArray = [];
-                projects.project[task].projectImages.forEach(function (image) {
+                projects.projects[task].images.forEach(function (image) {
                     imageArray.push(HTMLprojectImage.replace('%data%', image));
                 });
                 return imageArray;
@@ -205,8 +208,10 @@ var projects = {
     }
 };
 
-// google Map
+
+// Google Map
 $('#mapDiv').append(googleMap);
+
 
 // Functions
 bio.display();
